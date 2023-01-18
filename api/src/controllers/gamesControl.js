@@ -52,10 +52,36 @@ const searchGamesByName = async (name) => {
 };
 
 const gameById = async (id, source) => {
-  const game = source === 'api'
-    ? (await axios.get(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`)).data
-    : await Videogame.findByPk(id, { include: { model: Genre } });
-  return game;
+
+
+  if (source === 'api') {
+    const apiGamesRaw = (await axios.get(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`)).data;
+    return {
+      id: apiGamesRaw.id,
+      name: apiGamesRaw.name,
+      image: apiGamesRaw.background_image,
+      description: apiGamesRaw.description,
+      genres: apiGamesRaw.genres?.map((e) => e.name),
+      released: apiGamesRaw.released,
+      rating: apiGamesRaw.rating,
+      platforms: apiGamesRaw.parent_platforms?.map(
+        (e) => e.platform.name
+      ),
+      created: false
+    };
+  } else {
+    return (await Videogame.findByPk(id, {
+      attributes: ['id', 'name', 'image', 'description', 'relesed', 'rating', 'platforms'],
+      include: [{ model: Genre, attributes: ['name'] }]
+    }));
+  }
+  // const game = source === 'api'
+  //   ? (await axios.get(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`)).data
+  //   : (await Videogame.findByPk(id, {
+  //     attributes: ['id', 'name', 'image', 'description', 'relesed', 'rating', 'platforms'],
+  //     include: [{ model: Genre, attributes: ['name'] }]
+  //   }));
+  // return game;
 };
 
 const createGames = async (name, description, relesed, rating, platforms, image, created, genres) => {
