@@ -1,58 +1,77 @@
 require('dotenv').config();
 const { API_KEY } = process.env;
 const axios = require('axios').default;
-const { Videogame, Genre, Op } = require('../db');
+const { Videogame, Genre } = require('../db');
 
 
 // **********Funcion que busca todos los videoGames********** //
 const allGames = async () => {
   //Busca que todos los juegos dentro de la DB
-  const gamesDB = await Videogame.findAll({
-    include: {
-      model: Genre,
-      attributes: ['name'],
-    }
+  const gamesDaB = await Videogame.findAll({
+    attributes: ['id', 'name', 'image', 'created'],
+    include: [{
+      model: Genre, attributes: ['name'], through: {
+        attributes: [],
+      },
+    }]
   });
-  //Hace el llamado a la api
-  const apiGameRauw = (await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}`)).data;
-
-  //Realiza el mapeo de los datos que devuelce el axios
-  // const apiGames = findGames(apiGameRauw);
-  const apiGames = apiGameRauw.results.map((game) => {
+  const gamesDB = gamesDaB.map((game) => {
     return {
       id: game.id,
       name: game.name,
-      description: game.description,
-      rating: game.rating,
+      image: game.image,
+      genres: game.genres?.map(el => el.name),
+    }
+  })
+  //Hace el llamado a la api
+  // const apiGameRauw = (await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}`)).data;
+  let results = [...gamesDB]
+
+  const url1 = (await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=1`)).data;
+  const url2 = (await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=2`)).data;
+  const url3 = (await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=3`)).data;
+  const url4 = (await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=4`)).data;
+  const url5 = (await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=5`)).data;
+
+  apiGameRauw = [...url1.results, ...url2.results, ...url3.results, ...url4.results, ...url5.results]
+  //Realiza el mapeo de los datos que devuelve el axios
+  const apiGames = apiGameRauw?.map((game) => {
+    return {
+      id: game.id,
+      name: game.name,
       image: game.background_image,
       genres: game.genres?.map(el => el.name),
-      created: false
+      created: false,
+
     }
   });
   // une y retorna los datos encontrados en la DB y en la API 
-  return [...gamesDB, ...apiGames]
+  return [...results, ...apiGames];
 };
-
+/******************************FUNCION QUE BUSCA POR NOMBRE*******************************/
 const searchGamesByName = async (name) => {
-  const GameByNameDB = await Videogame.findAll({ where: { name: name } });
+  const GameByNameDB = await Videogame.findAll({
+    attributes: ['id', 'name', 'image', 'created'],
+    include: [{ model: Genre, attributes: ['name'], through: { attributes: [], } }]
+  });
   const apiGameRauw = (await axios.get(`https://api.rawg.io/api/games?search=${name}&key=${API_KEY}`)).data;
   const apiGames = apiGameRauw.results.map((game) => {
     return {
       id: game.id,
       name: game.name,
-      description: game.description,
-      rating: game.rating,
       image: game.background_image,
       genres: game.genres?.map(el => el.name),
-      created: false
+      created: false,
     }
   });
+  if (apiGames.length) apiGames
+  else throw Error(`${name} does not exist`)
   const results = [...GameByNameDB, ...apiGames];
   return results.slice(0, 15);
 };
 
+/******************************FUNCION PARA BUSCAR POR ID******************************+*/
 const gameById = async (id, source) => {
-
 
   if (source === 'api') {
     const apiGamesRaw = (await axios.get(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`)).data;
@@ -70,20 +89,24 @@ const gameById = async (id, source) => {
       created: false
     };
   } else {
-    return (await Videogame.findByPk(id, {
+    const dataDB = (await Videogame.findByPk(id, {
       attributes: ['id', 'name', 'image', 'description', 'relesed', 'rating', 'platforms'],
-      include: [{ model: Genre, attributes: ['name'] }]
+      include: [{ model: Genre, attributes: ['name'], through: { attributes: [] } }]
     }));
+    return {
+      id: dataDB.id,
+      name: dataDB.name,
+      image: dataDB.image,
+      description: dataDB.description,
+      relesed: dataDB.released,
+      rating: dataDB.rating,
+      platforms: dataDB.platforms,
+      genres: dataDB.genres?.map(el => el.name),
+    }
   }
-  // const game = source === 'api'
-  //   ? (await axios.get(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`)).data
-  //   : (await Videogame.findByPk(id, {
-  //     attributes: ['id', 'name', 'image', 'description', 'relesed', 'rating', 'platforms'],
-  //     include: [{ model: Genre, attributes: ['name'] }]
-  //   }));
-  // return game;
 };
 
+/********************************FUNCION PARA CREAR VIDEOGAME*******************************+*/
 const createGames = async (name, description, relesed, rating, platforms, image, created, genres) => {
   const genresDb = await Genre.findAll({
     where: {

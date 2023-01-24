@@ -1,0 +1,41 @@
+.searchBar {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    width: 60%;
+    /* ocupa el ancho completo del contenedor */
+    padding: 10px;
+    /* agrega un poco de espacio alrededor */
+    border-radius: 5px;
+    /* redondea los bordes */
+
+}
+
+.searchBar input [type="text"] {
+    width: 100%;
+    /* ocupa el ancho completo de la barra de búsqueda */
+    padding: 5px;
+    /* agrega un poco de espacio alrededor */
+    border: none;
+    /* elimina el borde por defecto */
+    font-size: 15px;
+    /* cambia el tamaño de la fuente */
+    /* flex: 1; */
+
+}
+
+/* Estilos para el botón de búsqueda */
+.searchBar button {
+    float: right;
+    /* flota a la derecha */
+    padding: 5px 10px;
+    /* agrega un poco de espacio alrededor */
+    border: none;
+    /* elimina el borde por defecto */
+    background-color: #333;
+    /* cambia el color de fondo */
+    color: #fff;
+    /* cambia el color de la fuente */
+    cursor: pointer;
+    /* cambia el cursor a "pointer" cuando el usuario pasa sobre el botón */
+}

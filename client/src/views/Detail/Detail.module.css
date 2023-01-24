@@ -1,0 +1,33 @@
+.container {
+    width: 900px;
+    height: 800px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 120px;
+}
+
+
+.container img {
+    width: 80%;
+    height: 45%;
+}
+
+.container h3 {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.container p {
+    font-size: 15px;
+    margin: 10px 0;
+    display: block;
+    margin-bottom: 1em;
+    text-align: center;
+}

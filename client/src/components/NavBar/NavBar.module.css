@@ -1,0 +1,43 @@
+.mainContainer {
+  position: fixed;
+  /* fija la posición de la barra de navegación */
+  top: 0;
+  /* coloca la barra de navegación en la parte superior */
+  left: 0;
+  /* coloca la barra de navegación en el lado izquierdo */
+  width: 100%;
+  /* ocupa el ancho completo del contenedor */
+  background-color: #333;
+  /* cambia el color de fondo */
+  color: #fff;
+  /* cambia el color de la fuente */
+  display: flex;
+  /* permite alinear los elementos en una línea */
+  align-items: center;
+  /* alinea los elementos en el centro */
+  justify-content: flex-end;
+  /* alinea los elementos a la derecha */
+}
+
+.mainContainer button {
+  padding: 10px;
+  /* agrega un poco de espacio alrededor */
+  background-color: transparent;
+  /* elimina el color de fondo */
+  border: none;
+  /* elimina el borde */
+  color: #fff;
+  /* cambia el color de la fuente */
+  cursor: pointer;
+  /* cambia el cursor a "pointer" cuando el usuario pasa sobre el botón */
+}
+
+
+
+/* .mainContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border-radius: 15px;
+  border: 1px solid black;
+} */
