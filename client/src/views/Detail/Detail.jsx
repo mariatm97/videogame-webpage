@@ -21,7 +21,7 @@ export const Detail = () => {
   }
   console.log(Detail)
   return (
-    <div className={style.container}>
+    <div className={style.Detailcontainer}>
 
       <h3>{detail.name}</h3>
       <img src={detail.image} alt='imageGame' />

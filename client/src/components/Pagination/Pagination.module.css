@@ -1,0 +1,30 @@
+.pagContainer {
+    display: flex;
+    justify-content: center;
+    align-items: cent
+}
+
+.pagContainer a {
+    display: block;
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+    border: 1px solid rgb(203, 197, 197);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 30px;
+    text-decoration: none;
+    color: rgb(203, 197, 197);
+    font-weight: bold;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.609);
+}
+
+.pagContainer a.active {
+    background-color: #333;
+    color: rgb(228, 225, 225);
+}
+
+.pagContainer a:hover {
+    background-color: #eee;
+    color: #333;
+}

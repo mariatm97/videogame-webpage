@@ -1,4 +1,4 @@
-.mainContainer {
+.NavContainer {
   position: fixed;
   /* fija la posición de la barra de navegación */
   top: 0;
@@ -19,8 +19,8 @@
   /* alinea los elementos a la derecha */
 }
 
-.mainContainer button {
-  padding: 10px;
+.NavContainer button {
+  padding: 3px;
   /* agrega un poco de espacio alrededor */
   background-color: transparent;
   /* elimina el color de fondo */
@@ -30,6 +30,9 @@
   /* cambia el color de la fuente */
   cursor: pointer;
   /* cambia el cursor a "pointer" cuando el usuario pasa sobre el botón */
+  /* border: 1px solid rgb(174, 166, 166);
+  border-radius: 5px;
+  margin-right: 5px; */
 }
 
 

@@ -5,7 +5,7 @@ import style from './NavBar.module.css'
 
 export const NavBar = (props) => {
   return (
-    <div className={style.mainContainer}>
+    <div className={style.NavContainer}>
       <Link to='/home'><button>Home</button></Link>
       <Link to='/create'><button>Add game</button></Link>
       <SearchBar onSearch={props.onSearch} />

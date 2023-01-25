@@ -23,7 +23,7 @@ export default function SearchBar() {
     <form onSubmit={(event) => handleSubmit(event)}>
       <div className={style.searchBar}>
         <input type='text' id='search' value={name} placeholder="Search videogame..." onChange={(event) => handleInputChange(event)} />
-        <button type='submit' >Search🔎</button>
+        <button type='submit' >Search</button>
 
       </div>
     </form>

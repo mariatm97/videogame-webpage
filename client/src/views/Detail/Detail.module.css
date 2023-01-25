@@ -1,4 +1,4 @@
-.container {
+.Detailcontainer {
     width: 900px;
     height: 800px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -12,19 +12,19 @@
 }
 
 
-.container img {
+.Detailcontainer img {
     width: 80%;
     height: 45%;
 }
 
-.container h3 {
+.Detailcontainer h3 {
     font-size: 22px;
     font-weight: bold;
     text-align: center;
     margin: 20px 0;
 }
 
-.container p {
+.Detailcontainer p {
     font-size: 15px;
     margin: 10px 0;
     display: block;
