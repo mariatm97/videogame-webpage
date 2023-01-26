@@ -1,4 +1,5 @@
-import { ALL_GAMES, GAME_DETAIL, GAME_BY_NAME, 
+import {
+  ALL_GAMES, GAME_DETAIL, GAME_BY_NAME, ALL_GENRES,
   // ORDER_BY_NAME, FILTER_ORIGIN, FILTER_RATING, FILTER_GENRE 
 } from './actions';
 
@@ -17,6 +18,8 @@ const rootReducer = (state = initialstate, action) => {
       return { ...state, gameDetail: action.payload };
     case GAME_BY_NAME:
       return { ...state, games: action.payload };
+    case ALL_GENRES:
+      return { ...state, genres: action.payload };
     // case ORDER_BY_NAME:
     //   return{};
     // case FILTER_ORIGIN:

@@ -90,7 +90,7 @@ const gameById = async (id, source) => {
     };
   } else {
     const dataDB = (await Videogame.findByPk(id, {
-      attributes: ['id', 'name', 'image', 'description', 'relesed', 'rating', 'platforms'],
+      attributes: ['id', 'name', 'image', 'description', 'released', 'rating', 'platforms'],
       include: [{ model: Genre, attributes: ['name'], through: { attributes: [] } }]
     }));
     return {
@@ -98,7 +98,7 @@ const gameById = async (id, source) => {
       name: dataDB.name,
       image: dataDB.image,
       description: dataDB.description,
-      relesed: dataDB.released,
+      released: dataDB.released,
       rating: dataDB.rating,
       platforms: dataDB.platforms,
       genres: dataDB.genres?.map(el => el.name),
@@ -107,7 +107,7 @@ const gameById = async (id, source) => {
 };
 
 /********************************FUNCION PARA CREAR VIDEOGAME*******************************+*/
-const createGames = async (name, description, relesed, rating, platforms, image, created, genres) => {
+const createGames = async (name, description, released, rating, platforms, image, created, genres) => {
   const genresDb = await Genre.findAll({
     where: {
       name: genres
@@ -116,7 +116,7 @@ const createGames = async (name, description, relesed, rating, platforms, image,
   const newGame = await Videogame.create({
     name,
     description,
-    relesed,
+    released,
     rating: rating || 0,
     platforms,
     image: image || 'https://static.vecteezy.com/system/resources/previews/002/293/504/non_2x/video-games-neon-sign-vector.jpg',

@@ -1,0 +1,73 @@
+.formcontainer {
+    width: 50%;
+    /* Establece el ancho del formulario */
+    margin: 2% auto;
+    /* Centra el formulario en la página */
+    padding: 20px;
+    /* Agrega un padding al formulario */
+    background-color: #5e5959;
+    /* Establece un color de fondo */
+    border-radius: 10px;
+    /* Agrega bordes redondeados */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.426);
+    /* Agrega una sombra al formulario */
+}
+
+.formcontainer h1 {
+    color: white;
+    font-size: 40px;
+}
+
+.formcontainer label {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.formcontainer input[type="text"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    /* Establece el ancho de los input */
+    padding: 12px 20px;
+    /* Agrega padding a los input */
+    margin: 8px 0;
+    /* Agrega un margin a los input */
+    box-sizing: border-box;
+    /* Asegura que el tamaño de los input incluya el padding y el border */
+    border: 1px solid #ccc;
+    /* Agrega un borde a los input */
+    border-radius: 5px;
+    /* Agrega bordes redondeados a los input */
+    background-color: rgb(204, 204, 204);
+    /* Establece un color de fondo */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.311);
+    /* Agrega una sombra al formulario */
+    font-size: 15px;
+}
+
+.formcontainer button {
+    font-size: 15px;
+    align-self: flex-end;
+    width: 25%;
+    padding: 10px 20px;
+    background-color: #131211;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 20px;
+    transition: all 0.3s ease-in-out;
+    margin-top: 8px;
+}
+
+.Delete {
+    font-size: 10px;
+    align-self: flex-end;
+    width: 5%;
+    padding: 5px 10px;
+    background-color: #131211;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 40px;
+    transition: all 0.3
+}

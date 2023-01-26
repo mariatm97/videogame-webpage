@@ -19,25 +19,22 @@ export const Detail = () => {
   function handleReset() {
     dispatch(getDetail());
   }
-  console.log(Detail)
   return (
     <div className={style.Detailcontainer}>
+      <div >
+        <h3>{detail.name}</h3>
+        <img src={detail.image} alt='imageGame' />
+        <p>⚜️Generos: {detail.genres?.join(',  ')}</p>
+        <p>Description: <p dangerouslySetInnerHTML={{ __html: detail.description }} /></p>
+        <p> ⭐Rating: {detail.rating}</p>
+        <p> 🎮Platforms:{detail.id?.length > 7
+          ? detail.platforms
+          : detail.platforms?.join(', ')}</p>
+        <p> 📆Released: {detail.released}</p>
+        <Link to={'/home'} onClick={handleReset}><button>◀ Return</button></Link>
+      </div>
 
-      <h3>{detail.name}</h3>
-      <img src={detail.image} alt='imageGame' />
-      <p>⚜️Generos: {detail.genres?.join(',  ')}</p>
-      <p>Description: <p dangerouslySetInnerHTML={{ __html: detail.description }} /></p>
-      <p> 🎮Platforms:{detail.id?.length > 7
-        ? detail.platforms
-        : detail.platforms?.join(', ')}</p>
-      <br />
-      <p> ⭐Rating: {detail.rating}</p>
-      <br />
-      <p> 📆Released: {detail.released}</p>
-
-      <br />
-      <Link to={'/home'} onClick={handleReset}><button>Return</button></Link>
-    </div>
+    </div >
   )
 
 }

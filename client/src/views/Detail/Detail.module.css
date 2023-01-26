@@ -1,33 +1,50 @@
 .Detailcontainer {
-    width: 900px;
-    height: 800px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 55%;
+    height: 900px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.609);
     border-radius: 10px;
     overflow: hidden;
-    margin: 20px;
+    margin: 5% auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 120px;
+    background-color: rgba(184, 184, 184, 0.487);
 }
 
 
 .Detailcontainer img {
-    width: 80%;
-    height: 45%;
+    width: 60%;
+    height: 30%;
+    /* object-fit: cover; */
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.609);
 }
 
 .Detailcontainer h3 {
-    font-size: 22px;
+    font-size: 25px;
     font-weight: bold;
     text-align: center;
     margin: 20px 0;
+
 }
 
 .Detailcontainer p {
     font-size: 15px;
-    margin: 10px 0;
     display: block;
     margin-bottom: 1em;
     text-align: center;
+    margin: 10px;
+}
+
+.Detailcontainer button {
+    align-self: flex-end;
+    width: 15%;
+    font-size: 1rem;
+    padding: 10px 20px;
+    background-color: #131211;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 20px;
+    transition: all 0.3s ease-in-out;
+    margin-top: 8px;
 }

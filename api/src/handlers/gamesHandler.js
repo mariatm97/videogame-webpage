@@ -24,10 +24,10 @@ const getGameHandler = async (req, res) => {
 };
 
 const postCreateGamesHandler = async (req, res) => {
-  const { name, description, relesed, rating, platforms, image, created, genres } = req.body;
+  const { name, description, released, rating, platforms, image, created, genres } = req.body;
 
   try {
-    await createGames(name, description, relesed, rating, platforms, image, created, genres);
+    await createGames(name, description, released, rating, platforms, image, created, genres);
     res.status(201).json("Video game created successfully");
   } catch (error) {
     res.status(400).json({ error: error.message });

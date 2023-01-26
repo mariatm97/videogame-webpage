@@ -15,9 +15,7 @@ const allGenres = async () => {
     const existingGenre = await Genre.findOne({ where: { name: genre.name } });
 
     // Si el género no existe, crea uno nuevo
-    if (!existingGenre) {
-      await Genre.create({ name: genre.name });
-    }
+    if (!existingGenre) await Genre.create({ name: genre.name });
   })
   // retorna todos los generos encontrados
   return (await Genre.findAll());

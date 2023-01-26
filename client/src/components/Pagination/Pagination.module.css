@@ -1,7 +1,8 @@
 .pagContainer {
     display: flex;
     justify-content: center;
-    align-items: cent
+    align-items: center;
+    cursor: pointer;
 }
 
 .pagContainer a {
@@ -16,7 +17,7 @@
     text-decoration: none;
     color: rgb(203, 197, 197);
     font-weight: bold;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.609);
+
 }
 
 .pagContainer a.active {

@@ -31,17 +31,10 @@ a:visited {
     color: rgb(47, 45, 45);
 }
 
-/* .Cardcontainer h5 {
-    margin: 8px;
-    font-size: 18px;
-    font-weight: bold;
-    text-transform: uppercase;
-    color: rgb(47, 45, 45);
-} */
-
 .Cardcontainer p {
     margin: 8px;
     font-size: 17px;
     color: rgb(46, 39, 39);
     text-align: center;
+    justify-content: center;
 }
