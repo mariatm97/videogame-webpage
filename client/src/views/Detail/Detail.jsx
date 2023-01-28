@@ -30,7 +30,7 @@ export const Detail = () => {
         <p> 🎮Platforms:{detail.id?.length > 7
           ? detail.platforms
           : detail.platforms?.join(', ')}</p>
-        <p> 📆Released: {detail.released}</p>
+        <p> 📆Released: {detail.released ? detail.released : 'No information'}</p>
         <Link to={'/home'} onClick={handleReset}><button>◀ Return</button></Link>
       </div>
 

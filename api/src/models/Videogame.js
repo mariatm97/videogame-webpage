@@ -19,7 +19,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     released: {
-      type: DataTypes.DATEONLY
+      type: DataTypes.DATEONLY,
     },
     rating: {
       type: DataTypes.FLOAT,

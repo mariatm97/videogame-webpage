@@ -41,7 +41,7 @@ const allGames = async () => {
       id: game.id,
       name: game.name,
       image: game.background_image,
-      platform: game.platform?.map(el=>el.name),
+      platform: game.platform?.map(el => el.name),
       genres: game.genres?.map(el => el.name),
       created: false,
 
