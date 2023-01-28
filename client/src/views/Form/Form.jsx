@@ -1,15 +1,13 @@
-import React from 'react'
-import { useState } from 'react';
-import { useSelector } from 'react-redux'
+import { React, useState } from 'react';
+import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import style from './Form.module.css';
-
+import { validateSubmit } from './formValidate.js';
 
 const Form = () => {
 
   const genres = useSelector((state) => state.genres);
-  console.log(genres)
   const platforms = [
     "PC",
     "PlayStation 5",
@@ -64,53 +62,56 @@ const Form = () => {
   ];
 
   const [form, setForm] = useState({
-    name: '',
-    description: '',
-    released: '',
+    name: "",
+    description: "",
+    released: "",
     rating: 0,
+    platforms: [],
     genres: [],
-    platforms: []
   });
 
   const [errors, setErrors] = useState({
-    name: '',
-    description: '',
-    released: '',
-    rating: '',
-    genres: [],
-    platforms: []
+    name: "",
+    description: "",
+    released: "",
+    rating: "",
+    platforms: '',
+    genres: '',
   });
 
   const validate = (form) => {
-    if (/^[a-zA-Z0-9 ():_-]*$/.test(form.name)) {
-      setErrors({ ...errors, name: '' })
-    } else {
-      setErrors({ ...errors, name: 'There is an error in the name' });
-      if (form.name === '') setErrors({ ...errors, name: 'Please write the name of the game' });
-    }
-    if (form.description === '') setErrors({ ...errors, description: 'Please write the description of the game' });
+    if (form.name === '')
+      setErrors({ ...errors, name: 'Please, make sure to type a valid game name' });
 
-    if (/^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[012])-(19|20)[0-9]{2}$/.test(form.released)) { setErrors({ ...errors, released: '' }) }
-    else { setErrors({ ...errors, released: 'Wrong released date format. Should be DD-MM-YYYY' }) };
+    if (form.description === '') setErrors({ ...errors, description: 'Please write the description of the game' })
 
-    if (/^[0-5]+([,][0-5]+)?$/.test(form.rating)) { setErrors({ ...errors, rating: '' }) }
-    else { setErrors({ ...errors, rating: 'Rating must be a number between 0-5' }) }
+    if (!(/^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[012])-(19|20)[0-9]{2}$/.test(form.released)))
+      setErrors({...errors, released: 'Wrong released date format. Should be DD-MM-YYYY' })
 
-  };
+    if (!(/^[0-5]+([.][0-5]+)?$/.test(form.rating))) setErrors({...errors, rating: 'Rating must be a number between 0 - 5' })
+
+  }
 
   const handleOnChange = (event) => {
     const property = event.target.name;
     const value = event.target.value;
 
-    // validate({ ...form, [property]: value })
+    validate({ ...form, [property]: value })
+    // setErrors(validate({ ...form, [property]: value }))
     setForm({ ...form, [property]: value })
   };
 
   const handlerSubmit = (event) => {
     event.preventDefault()
-    axios.post('http://localhost:3001/videogames', form)
-      .then((res) => console.log(res.data));
-    alert(`${form.name} created successfully`);
+    if (Object.keys(errors).length === 0) {
+      validateSubmit(form)
+      axios.post('http://localhost:3001/videogames', form)
+        .then(res => alert(res.data))
+        .catch(err => alert(err))
+    } else {
+      alert('ERROR: there are unfilled fields😕');
+    }
+
   };
 
   const handleGenres = (event) => {
@@ -131,34 +132,37 @@ const Form = () => {
       <h1>✨Add your own videogame✨</h1>
       <form onSubmit={handlerSubmit}>
         <div>
-          <label>🔖Game name: </label>
-          <input type='text' value={form.name} onChange={handleOnChange} name='name' placeholder='Write the game name...' autoComplete='off' />
-          {errors.name && (<span>{errors.name}</span>)}
+          <label htmlFor='name'>Name: </label>
+          {/* <input type='text' value={form.name} onChange={handleOnChange} name="name" placeholder='Write the game name...' autoComplete='off' /> */}
+          <input type="text" value={form.name} id='name' name="name" onChange={handleOnChange} />
+          {errors.name && <p className={style.errorText}>{errors.name}</p>}
         </div>
 
         <div>
           <label>📝Description: </label>
-          <textarea type='text' value={form.description} onChange={handleOnChange} name='description' placeholder='Write a short game description...' />
-          {errors.description && (<span>{errors.description}</span>)}
+          <p>
+            <textarea type='text' value={form.description} onChange={handleOnChange} name='description' placeholder='Write a short game description...' />
+          </p>
+          {errors.description && <p className={style.errorText}>{errors.description}</p>}
         </div>
 
         <div>
           <label>📆Released date: </label>
           <input type='text' value={form.released} onChange={handleOnChange} name='released' placeholder='dd-mm-yyyy' />
-          {errors.released && (<span>{errors.released}</span>)}
+          {errors.released && <p className={style.errorText}>{errors.released}</p>}
         </div>
 
         <div>
           <label>⭐Rating: </label>
           <input type='text' value={form.rating} onChange={handleOnChange} name='rating' placeholder='Rating from 1 to 5...' />
-          {errors.rating && (<span>{errors.rating}</span>)}
+          {errors.rating && <p className={style.errorText}>{errors.rating}</p>}
         </div>
 
         <div>
           <label>⚜️Genres: </label>
           <select defaultValue="Seleccionar" onChange={(event) => handleGenres(event)}>
             <option disabled>Seleccionar</option>
-            {genres?.map((g) => (<option value={g.name} key={g.id}>{g.name}</option>))}
+            {genres?.map((g) => (<option value={g.name} key={g.id}> {g.name}</option>))}
           </select>
           {form.genres.map((g) => (
             <div key={g}>
@@ -166,7 +170,7 @@ const Form = () => {
               <button key={g.id} value={g.name} onClick={() => handleDeleteGenre(g)}>X</button>
             </div>))}
         </div>
-
+        {!form.genres && <p className={style.errorSelectText}>Select at least one gender</p>}
         <div>
           <label>🎮Platforms: </label>
           <select defaultValue="Seleccionar" onChange={(event) => handlePlatform(event)}>
@@ -179,15 +183,17 @@ const Form = () => {
               <button onClick={() => handleDeletePlataform(p)}>X</button>
             </div>))}
         </div>
+        {!form.platforms && <p className={style.errorSelectText}>Select at least one platform</p>}
 
         <button type='submit'>Create Game</button>
         <div>
           <Link to='/home'>
-            <button>◀ Return</button>
+            <button>◀ Return Home</button>
           </Link>
         </div>
       </form>
     </div>
   )
 }
+
 export default Form;

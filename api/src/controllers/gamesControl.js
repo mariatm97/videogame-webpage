@@ -8,7 +8,7 @@ const { Videogame, Genre } = require('../db');
 const allGames = async () => {
   //Busca que todos los juegos dentro de la DB
   const gamesDaB = await Videogame.findAll({
-    attributes: ['id', 'name', 'image', 'created'],
+    attributes: ['id', 'name', 'image', 'platforms', 'created'],
     include: [{
       model: Genre, attributes: ['name'], through: {
         attributes: [],
@@ -20,6 +20,7 @@ const allGames = async () => {
       id: game.id,
       name: game.name,
       image: game.image,
+      platform: game.platform?.map(el => el.name),
       genres: game.genres?.map(el => el.name),
     }
   })
@@ -40,6 +41,7 @@ const allGames = async () => {
       id: game.id,
       name: game.name,
       image: game.background_image,
+      platform: game.platform?.map(el=>el.name),
       genres: game.genres?.map(el => el.name),
       created: false,
 

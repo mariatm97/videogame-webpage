@@ -71,3 +71,18 @@ textarea {
     border-radius: 40px;
     transition: all 0.3
 }
+
+.errorText {
+    margin: 0;
+    margin-left: 30px;
+    margin-bottom: 10px;
+    color: rgb(205, 13, 13);
+}
+
+.errorSelectText {
+    margin: 3px;
+    margin-left: 25px;
+    margin-bottom: 25px;
+    color: rgb(215, 104, 25);
+    justify-content: flex-start;
+}
