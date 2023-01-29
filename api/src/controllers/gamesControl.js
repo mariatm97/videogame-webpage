@@ -20,33 +20,37 @@ const allGames = async () => {
       id: game.id,
       name: game.name,
       image: game.image,
-      platform: game.platform?.map(el => el.name),
+      platforms: game.platforms,
       genres: game.genres?.map(el => el.name),
     }
   })
-  //Hace el llamado a la api
-  // const apiGameRauw = (await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}`)).data;
+
   let results = [...gamesDB]
+//para traer los resultados desde la api
+  const urls = [1, 2, 3, 4, 5].map(page => axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=${page}`));
 
-  const url1 = (await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=1`)).data;
-  const url2 = (await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=2`)).data;
-  const url3 = (await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=3`)).data;
-  const url4 = (await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=4`)).data;
-  const url5 = (await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=5`)).data;
+  const [url1, url2, url3, url4, url5] = await Promise.all(urls);
 
-  apiGameRauw = [...url1.results, ...url2.results, ...url3.results, ...url4.results, ...url5.results]
-  //Realiza el mapeo de los datos que devuelve el axios
+  const apiGameRauw = [
+    ...url1.data.results,
+    ...url2.data.results,
+    ...url3.data.results,
+    ...url4.data.results,
+    ...url5.data.results
+  ];
+
   const apiGames = apiGameRauw?.map((game) => {
     return {
       id: game.id,
       name: game.name,
       image: game.background_image,
-      platform: game.platform?.map(el => el.name),
+      platforms: game.parent_platforms?.map(
+        (e) => e.platform.name),
       genres: game.genres?.map(el => el.name),
       created: false,
-
     }
   });
+
   // une y retorna los datos encontrados en la DB y en la API 
   return [...results, ...apiGames];
 };

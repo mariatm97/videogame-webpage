@@ -1,65 +1,27 @@
-import { React, useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getGenres, getGames } from '../../redux/actions';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import style from './Form.module.css';
 import { validate, } from './formValidate.js';
 
 export const Form = () => {
+  const dispatch = useDispatch();
+
+  //Cuando se monte mi form, que se monten todos mis genres y videogames para buscar las platforms
+  useEffect(() => {
+    dispatch(getGenres());
+    dispatch(getGames());
+  }, [dispatch])
 
   const genres = useSelector((state) => state.genres);
-  const platforms = [
-    "PC",
-    "PlayStation 5",
-    "Xbox One",
-    "PlayStation 4",
-    "Xbox Series S/X",
-    "Nintendo Switch",
-    "iOS",
-    "Android",
-    "Nintendo 3DS",
-    "Nintendo DS",
-    "Nintendo DSi",
-    "macOS",
-    "Linux",
-    "Xbox 360",
-    "Xbox",
-    "PlayStation 3",
-    "PlayStation 2",
-    "PlayStation",
-    "PS Vita",
-    "PSP",
-    "Wii U",
-    "Wii",
-    "GameCube",
-    "Nintendo 64",
-    "Game Boy Advance",
-    "Game Boy Color",
-    "Game Boy",
-    "SNES",
-    "NES",
-    "Classic Macintosh",
-    "Apple II",
-    "Commodore / Amiga",
-    "Atari 7800",
-    "Atari 5200",
-    "Atari 2600",
-    "Atari Flashback",
-    "Atari 8-bit",
-    "Atari ST",
-    "Atari Lynx",
-    "Atari XEGS",
-    "Genesis",
-    "SEGA Saturn",
-    "SEGA CD",
-    "SEGA 32X",
-    "SEGA Master System",
-    "Dreamcast",
-    "3DO",
-    "Jaguar",
-    "Game Gear",
-    "Neo Geo",
-  ];
+  //Para traer un array de platforms
+  let allGames = useSelector(state => state.games);
+  const platformsList = new Set();
+  allGames.forEach(game => game.platforms.forEach(platform => platformsList.add(platform)));
+  const platforms = Array.from(platformsList);
+
 
   const [form, setForm] = useState({
     name: "",
@@ -89,10 +51,19 @@ export const Form = () => {
 
   const handlerSubmit = (event) => {
     event.preventDefault()
-    if (Object.keys(errors).length === 0) {
+    if (!Object.keys(errors).length) {
+
       axios.post('http://localhost:3001/videogames', form)
         .then(res => alert(res.data))
         .catch(err => alert(err))
+      setForm({
+        name: "",
+        description: "",
+        released: "",
+        rating: 0,
+        platforms: [],
+        genres: [],
+      })
 
     } else {
       alert('ERROR: there are unfilled fields😕');
@@ -133,49 +104,49 @@ export const Form = () => {
 
         <div>
           <label>📆Released date: </label>
-          <input type='text' value={form.released} onChange={handleOnChange} name='released' placeholder='dd-mm-yyyy' />
+          <input type='text' value={form.released} onChange={handleOnChange} name='released' placeholder='dd-mm-yyyy' autoComplete='off' />
           {errors.released && <p className={style.errorText}>{errors.released}</p>}
         </div>
 
         <div>
           <label>⭐Rating: </label>
-          <input type='text' value={form.rating} onChange={handleOnChange} name='rating' placeholder='Rating from 1 to 5...' />
+          <input type='text' value={form.rating} onChange={handleOnChange} name='rating' placeholder='Rating from 1 to 5...' autoComplete='off' />
           {errors.rating && <p className={style.errorText}>{errors.rating}</p>}
         </div>
+        <div>
+          <div>
+            <label>⚜️Genres: *</label>
+            <select defaultValue="Seleccionar" name='genres' onChange={(event) => handleGenres(event)}>
+              <option disabled>Seleccionar</option>
+              {genres?.map((g) => (<option value={g.name} key={g.id}> {g.name}</option>))}
+            </select>
+          </div>
+          <div>
+            {form.genres?.map((g) => (
+              <div key={g}> {g + " "}
+                <button key={g.id} value={g.name} onClick={() => handleDeleteGenre(g)}>X</button>
+              </div>))}
+          </div>
+        </div>
+        {errors.genres && <p className={style.errorSelectText}>{errors.genres}</p>}
 
         <div>
-          <label>⚜️Genres: *</label>
-          <select defaultValue="Seleccionar" onChange={(event) => handleGenres(event)}>
-            <option disabled>Seleccionar</option>
-            {genres?.map((g) => (<option value={g.name} key={g.id}> {g.name}</option>))}
-          </select>
-          {/* {errors.genres && <p className={style.errorSelectText}>{errors.genres}</p>} */}
-        </div>
+          <div>
+            <label>🎮Platforms: *</label>
+            <select defaultValue="Seleccionar" name='platforms' onChange={(event) => handlePlatform(event)}>
+              <option disabled>Seleccionar</option>
+              {platforms?.map((p) => (<option value={p} key={p}>{p}</option>))}
+            </select>
 
-        <div>
-          {form.genres.map((g) => (
-            <div key={g}>
-              {g + " "}
-              <button key={g.id} value={g.name} onClick={() => handleDeleteGenre(g)}>X</button>
-            </div>))}
+          </div>
+          <div>
+            {form.platforms?.map((p) => (
+              <div key={p}> {p + " "}
+                <button onClick={() => handleDeletePlataform(p)}>X</button>
+              </div>))}
+          </div>
         </div>
-
-        <div>
-          <label>🎮Platforms: *</label>
-          <select defaultValue="Seleccionar" onChange={(event) => handlePlatform(event)}>
-            <option disabled>Seleccionar</option>
-            {platforms?.map((p) => (<option value={p} key={p}>{p}</option>))}
-          </select>
-          {/* {errors.platforms && <p className={style.errorSelectText}>{errors.platforms}</p>} */}
-        </div>
-
-        <div>
-          {form.platforms.map((p) => (
-            <div key={p}>
-              {p + " "}
-              <button onClick={() => handleDeletePlataform(p)}>X</button>
-            </div>))}
-        </div>
+        {errors.platforms && <p className={style.errorSelectText}>{errors.platforms}</p>}
 
         <button type='submit'>Create Game</button>
         <div>

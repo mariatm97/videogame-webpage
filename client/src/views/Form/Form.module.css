@@ -5,7 +5,7 @@
     /* Centra el formulario en la página */
     padding: 20px;
     /* Agrega un padding al formulario */
-    background-color: #5e5959;
+    background-color: #787171;
     /* Establece un color de fondo */
     border-radius: 10px;
     /* Agrega bordes redondeados */
@@ -73,16 +73,20 @@ textarea {
 }
 
 .errorText {
+    font-size: 15px;
     margin: 0;
     margin-left: 30px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     color: rgb(205, 13, 13);
+    font-weight: bold;
 }
 
 .errorSelectText {
+    font-size: 15px;
     margin: 10px;
-    margin-left: 25px;
+    margin-left: 20px;
     margin-bottom: 25px;
-    color: rgb(215, 104, 25);
+    color: rgb(205, 13, 13);
     justify-content: flex-start;
+    font-weight: bold;
 }

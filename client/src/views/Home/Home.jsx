@@ -2,7 +2,7 @@ import React from 'react'
 import CardsContainer from '../../components/CardsContainer/CardsContainer';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { getGames, getGenres } from '../../redux/actions';
+import { getGames } from '../../redux/actions';
 import FilterBar from '../../components/FilterBar/FilterBar';
 
 
@@ -13,7 +13,6 @@ export const Home = () => {
   //Cuando se monte mi Home, que se monten todos mis Videogames
   useEffect(() => {
     dispatch(getGames());
-    dispatch(getGenres());
   }, [dispatch])
 
 
