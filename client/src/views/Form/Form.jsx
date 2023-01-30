@@ -24,19 +24,19 @@ export const Form = () => {
 
 
   const [form, setForm] = useState({
-    name: "",
-    description: "",
-    released: "",
+    name: '',
+    description: '',
+    released: '',
     rating: 0,
     platforms: [],
     genres: [],
   });
 
   const [errors, setErrors] = useState({
-    name: "",
-    description: "",
-    released: "",
-    rating: "",
+    name: '',
+    description: '',
+    released: '',
+    rating: '',
     platforms: '',
     genres: '',
   });
@@ -57,9 +57,9 @@ export const Form = () => {
         .then(res => alert(res.data))
         .catch(err => alert(err))
       setForm({
-        name: "",
-        description: "",
-        released: "",
+        name: '',
+        description: '',
+        released: '',
         rating: 0,
         platforms: [],
         genres: [],
@@ -127,8 +127,9 @@ export const Form = () => {
                 <button key={g.id} value={g.name} onClick={() => handleDeleteGenre(g)}>X</button>
               </div>))}
           </div>
+          {errors.genres && <p className={style.errorSelectText}>{errors.genres}</p>}
         </div>
-        {errors.genres && <p className={style.errorSelectText}>{errors.genres}</p>}
+
 
         <div>
           <div>
@@ -145,8 +146,9 @@ export const Form = () => {
                 <button onClick={() => handleDeletePlataform(p)}>X</button>
               </div>))}
           </div>
+          {errors.platforms && <p className={style.errorSelectText}>{errors.platforms}</p>}
         </div>
-        {errors.platforms && <p className={style.errorSelectText}>{errors.platforms}</p>}
+
 
         <button type='submit'>Create Game</button>
         <div>

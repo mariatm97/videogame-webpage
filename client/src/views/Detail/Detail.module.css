@@ -25,7 +25,7 @@
     font-weight: bold;
     text-align: center;
     margin: 20px 0;
-
+    text-transform: uppercase;
 }
 
 .Detailcontainer p {
@@ -47,4 +47,5 @@
     border-radius: 20px;
     transition: all 0.3s ease-in-out;
     margin-top: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.609);
 }

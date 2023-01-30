@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import Pagination from '../Pagination/Pagination';
 
-export const CardsContainer = () => {
+const CardsContainer = () => {
   const allGames = useSelector(state => state.games);
   //Estados para el paginado
   const [currentPage, setCurrentPage] = useState(1);
@@ -15,7 +15,18 @@ export const CardsContainer = () => {
   const firstIndexGame = lastIndexGame - gamesPerPage;
   const currentGames = allGames.slice(firstIndexGame, lastIndexGame); //videogames de la page actual
 
-  const actualPage = (pageNumbers) => {
+  const handleNext = () => {
+    if (currentPage < (Math.ceil(allGames.length / gamesPerPage))) {
+      setCurrentPage(currentPage + 1);
+    }
+  }
+  const handlePrev = () => {
+    if (currentPage !== 1) {
+      setCurrentPage(currentPage - 1)
+    }
+  }
+
+  const handlePage = (pageNumbers) => {
     setCurrentPage(pageNumbers)
   }
 
@@ -24,6 +35,7 @@ export const CardsContainer = () => {
       <div className={style.Cardscontainer}>
         {currentGames?.map((game) => {
           return <Card
+            key={game.id}
             name={game.name}
             id={game.id}
             image={game.image}
@@ -34,8 +46,12 @@ export const CardsContainer = () => {
         <Pagination
           gamesPerPage={gamesPerPage}
           allGames={allGames.length}
-          actualPage={actualPage}
+          page={handlePage}
+          currentPage={currentPage}
+          prev={handlePrev}
+          next={handleNext}
         />
+
       </div>
 
     </div>

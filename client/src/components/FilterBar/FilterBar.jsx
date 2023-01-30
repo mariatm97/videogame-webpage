@@ -1,23 +1,16 @@
 import React from 'react';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import style from './FilterBar.module.css'
 
-export const FilterBar = () => {
-  // const allGenres = useSelector(state => state.genres);
+export const FilterBar = ({ filterGenres, filterOrigin, OrderName }) => {
+  const allGenres = useSelector(state => state.genres);
 
   return (
     <div className={style.FilterContainer}>
-      <select>
-        <option value='order'>Order</option>
+      <select defaultValue="Order" onChange={(event) => OrderName(event)}>
+        <option disabled>Order</option>
         <option value='asc'>A-Z</option>
         <option value='desc'>Z-A</option>
-      </select>
-
-      <select>
-        <option value='origin'>Origin</option>
-        <option value='all'>All</option>
-        <option value='created'>Created</option>
-        <option value='existing'>Existing</option>
       </select>
 
       <select>
@@ -26,14 +19,17 @@ export const FilterBar = () => {
         <option value='low'>Rating Low</option>
       </select>
 
-      <select>
-        <option value='genre'>Genre</option>
-        <option value='all'>All</option>
-        {/* {allGenres.map((genre) => (
-          <option key={genre.name} value={genre.name}>
-            {genre.name}
-          </option>
-        ))} */}
+      <select defaultValue="Origin" onChange={(event) => filterOrigin(event)}>
+        <option disabled>Origin</option>
+        <option value='all'>All Origins</option>
+        <option value='created'>Created</option>
+        <option value='existing'>Existing</option>
+      </select>
+
+      <select defaultValue="Genre" onChange={(event) => filterGenres(event)}>
+        <option disabled>Genre</option>
+        <option value='all'>All Genres</option>
+        {allGenres?.map((g) => (<option value={g.name} key={g.id}> {g.name}</option>))}
       </select>
     </div>
   )

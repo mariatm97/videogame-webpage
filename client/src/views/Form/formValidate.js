@@ -5,7 +5,7 @@ const regexRating = /^[0-5]+([.][0-5]+)?$/;
 export const validate = (form) => {
     const errors = {}
 
-    if (!(regexName.test(form.gameName)))
+    if (!(regexName.test(form.name)))
         errors.name = 'Please type a valid game name (no special characters)';
     if (form.name === '')
         errors.name = 'Please type a valid game name (non-empty string)';
@@ -19,11 +19,10 @@ export const validate = (form) => {
     if (form.rating === '');
     else if (!(regexRating.test(form.rating))) errors.rating = 'Rating must be a number between 0 - 5'
 
-    if (form.genres === '');
-    else if (form.genres < 1) errors.genres = 'Select at least one genre.';
 
-    if (form.platforms === '');
-    else if (form.platforms < 1) errors.platforms = 'Select at least one genre.';
+    if (form.genres.length === 0) errors.genres = 'Select at least one genre.';
+
+    if (form.platforms.length === 0) errors.platforms = 'Select at least one platform.';
 
     return errors;
 };

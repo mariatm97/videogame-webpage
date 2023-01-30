@@ -31,3 +31,15 @@
     cursor: pointer;
     /* cambia el cursor a "pointer" cuando el usuario pasa sobre el botón */
 }
+.FilterContainer option{
+    padding: 10px;
+        /* agrega un poco de espacio alrededor */
+        background-color: transparent;
+        /* elimina el color de fondo */
+        border: none;
+        /* elimina el borde */
+        color: rgb(13, 12, 12);
+        /* cambia el color de la fuente */
+        cursor: pointer;
+        /* cambia el cursor a "pointer" cuando el usuario pasa sobre el botón */
+}

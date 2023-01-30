@@ -4,6 +4,7 @@ import SearchBar from '../Search/SearchBar';
 import style from './NavBar.module.css'
 
 export const NavBar = (props) => {
+ 
   return (
     <div className={style.NavContainer}>
       <Link to='/home'><button>Home</button></Link>

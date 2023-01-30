@@ -22,11 +22,12 @@ const allGames = async () => {
       image: game.image,
       platforms: game.platforms,
       genres: game.genres?.map(el => el.name),
+      created: true
     }
   })
 
   let results = [...gamesDB]
-//para traer los resultados desde la api
+  //para traer los resultados desde la api
   const urls = [1, 2, 3, 4, 5].map(page => axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=${page}`));
 
   const [url1, url2, url3, url4, url5] = await Promise.all(urls);
