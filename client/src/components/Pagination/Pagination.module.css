@@ -52,7 +52,7 @@
     color: #333;
 }
 
-p {
+.pagination p {
     color: rgb(228, 225, 225);
     font-weight: bold;
     font-size: 17px;

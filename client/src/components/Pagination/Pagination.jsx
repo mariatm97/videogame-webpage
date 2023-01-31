@@ -20,7 +20,9 @@ export default function Pagination({ gamesPerPage, allGames, page, currentPage, 
         ))}
         <button onClick={next}>Next</button>
       </ul>
-      <p>Page {currentPage} of {numPages}</p>
+      <div className={style.pagination}>
+        <p>Page {currentPage} of {numPages}</p>
+      </div>
     </div>
   )
 }

@@ -2,13 +2,13 @@ require('dotenv').config();
 const { API_KEY } = process.env;
 const axios = require('axios').default;
 const { Videogame, Genre } = require('../db');
+const { Op } = require("sequelize")
 
 
 // **********Funcion que busca todos los videoGames********** //
 const allGames = async () => {
   //Busca que todos los juegos dentro de la DB
   const gamesDaB = await Videogame.findAll({
-    attributes: ['id', 'name', 'image', 'platforms', 'created'],
     include: [{
       model: Genre, attributes: ['name'], through: {
         attributes: [],
@@ -20,6 +20,7 @@ const allGames = async () => {
       id: game.id,
       name: game.name,
       image: game.image,
+      rating: game.rating,
       platforms: game.platforms,
       genres: game.genres?.map(el => el.name),
       created: true
@@ -45,6 +46,7 @@ const allGames = async () => {
       id: game.id,
       name: game.name,
       image: game.background_image,
+      rating: game.rating,
       platforms: game.parent_platforms?.map(
         (e) => e.platform.name),
       genres: game.genres?.map(el => el.name),
@@ -57,10 +59,21 @@ const allGames = async () => {
 };
 /******************************FUNCION QUE BUSCA POR NOMBRE*******************************/
 const searchGamesByName = async (name) => {
-  const GameByNameDB = await Videogame.findAll({
-    attributes: ['id', 'name', 'image', 'created'],
+  const GameByName = await Videogame.findAll({
+    where: { name: { [Op.iLike]: `%${name}%` } },
     include: [{ model: Genre, attributes: ['name'], through: { attributes: [], } }]
   });
+  const GameByNameDB = GameByName.map((game) => {
+    return {
+      id: game.id,
+      name: game.name,
+      image: game.image,
+      genres: game.genres?.map(el => el.name),
+      created: true
+    }
+  })
+
+
   const apiGameRauw = (await axios.get(`https://api.rawg.io/api/games?search=${name}&key=${API_KEY}`)).data;
   const apiGames = apiGameRauw.results.map((game) => {
     return {
@@ -71,10 +84,11 @@ const searchGamesByName = async (name) => {
       created: false,
     }
   });
-  if (apiGames.length) apiGames
-  else throw Error(`${name} does not exist`)
   const results = [...GameByNameDB, ...apiGames];
-  return results.slice(0, 15);
+
+  if (results.length) { return results.slice(0, 15) }
+  else throw Error(`${name} does not exist`)
+
 };
 
 /******************************FUNCION PARA BUSCAR POR ID******************************+*/
@@ -97,7 +111,6 @@ const gameById = async (id, source) => {
     };
   } else {
     const dataDB = (await Videogame.findByPk(id, {
-      attributes: ['id', 'name', 'image', 'description', 'released', 'rating', 'platforms'],
       include: [{ model: Genre, attributes: ['name'], through: { attributes: [] } }]
     }));
     return {

@@ -1,20 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { getGenres, getGames } from '../../redux/actions';
+import React, { useState} from 'react';
+import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import style from './Form.module.css';
 import { validate, } from './formValidate.js';
 
 export const Form = () => {
-  const dispatch = useDispatch();
-
-  //Cuando se monte mi form, que se monten todos mis genres y videogames para buscar las platforms
-  useEffect(() => {
-    dispatch(getGenres());
-    dispatch(getGames());
-  }, [dispatch])
-
+ 
   const genres = useSelector((state) => state.genres);
   //Para traer un array de platforms
   let allGames = useSelector(state => state.games);

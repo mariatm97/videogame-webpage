@@ -1,6 +1,12 @@
 import {
-  ALL_GAMES, GAME_DETAIL, GAME_BY_NAME, ALL_GENRES, FILTER_ORIGIN, FILTER_GENRE, ORDER_BY_NAME,
-  //  ORDER_RATING, 
+  ALL_GAMES,
+  GAME_DETAIL,
+  GAME_BY_NAME,
+  ALL_GENRES,
+  FILTER_ORIGIN,
+  FILTER_GENRE,
+  ORDER_BY_NAME,
+  ORDER_RATING
 } from './actions';
 
 const initialstate = {
@@ -39,17 +45,26 @@ const rootReducer = (state = initialstate, action) => {
 
     case ORDER_BY_NAME:
       let nameSorted = action.payload === 'asc' ? state.games.sort(function (a, b) {
-        if (a.name > b.name) { return 1 };
-        if (b.name > a.name) { return -1 };
+        if (a.name > b.name) { return 1; };
+        if (b.name > a.name) { return -1; };
         return 0;
       }) : state.games.sort(function (a, b) {
-        if (a.name > b.name) { return -1 };
-        if (b.name > a.name) { return 1 };
+        if (a.name > b.name) { return -1; };
+        if (b.name > a.name) { return 1; };
         return 0;
       })
-      return { ...state, game: nameSorted };
-    // case FILTER_RATING:
-    //   return {};
+      return { ...state, games: nameSorted };
+    case ORDER_RATING:
+      let ratingSorted = action.payload === 'low' ? state.games.sort(function (a, b) {
+        if (a.rating > b.rating) { return 1; };
+        if (b.rating > a.rating) { return -1; };
+        return 0;
+      }) : state.games.sort(function (a, b) {
+        if (a.rating > b.rating) { return -1; };
+        if (b.rating > a.rating) { return 1; };
+        return 0;
+      })
+      return { ...state, games: ratingSorted };
     default:
       return { ...state };
   }
