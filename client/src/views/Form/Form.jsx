@@ -1,12 +1,13 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import style from './Form.module.css';
 import { validate, } from './formValidate.js';
+// import { useEffect } from 'react';
 
 export const Form = () => {
- 
+
   const genres = useSelector((state) => state.genres);
   //Para traer un array de platforms
   let allGames = useSelector(state => state.games);
@@ -56,7 +57,6 @@ export const Form = () => {
         platforms: [],
         genres: [],
       })
-
     } else {
       alert('ERROR: there are unfilled fields😕');
       console.log(errors)
