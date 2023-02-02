@@ -4,7 +4,6 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import style from './Form.module.css';
 import { validate, } from './formValidate.js';
-// import { useEffect } from 'react';
 
 export const Form = () => {
 

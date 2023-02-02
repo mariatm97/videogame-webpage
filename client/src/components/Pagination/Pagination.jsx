@@ -14,15 +14,13 @@ export default function Pagination({ gamesPerPage, allGames, page, currentPage, 
   return (
     <div>
       <ul className={style.pagContainer}>
-        <button onClick={prev}> Previous</button>
+        <button className={style.botton}  onClick={prev}> Previous</button>
         {pageNumbers?.map(number => (
-          <a key={number} href onClick={() => page(number)}> {number} </a>
+          <button className={currentPage === number ? style.pageNumberActive : style.pageNumber} key={number} href onClick={() => page(number)}> {number} </button>
         ))}
-        <button onClick={next}>Next</button>
+        <button className={style.botton} onClick={next}>Next</button>
       </ul>
-      <div className={style.pagination}>
-        <p>Page {currentPage} of {numPages}</p>
-      </div>
+      
     </div>
   )
 }

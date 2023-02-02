@@ -9,6 +9,8 @@ export const validate = (form) => {
         errors.name = 'Please type a valid game name (no special characters)';
     if (form.name === '')
         errors.name = 'Please type a valid game name (non-empty string)';
+    if (!(/^[a-zA-Z ]{4,}$/.test(form.name)))
+        errors.name = 'Please type a valid game name (must have more than 4 letters)';
 
     if (form.description === '') errors.description = 'Please write the description of the game'
 

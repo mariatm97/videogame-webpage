@@ -5,7 +5,7 @@
     cursor: pointer;
 }
 
-.pagContainer a {
+/* .pagContainer a {
     display: block;
     width: 30px;
     height: 30px;
@@ -28,9 +28,41 @@
 .pagContainer a:hover {
     background-color: #eee;
     color: #333;
+} */
+.pageNumber {
+    background-color: rgb(80, 76, 76);
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+    border-radius: 50%;
+    font-weight: bold;
+    border: 1px solid rgb(203, 197, 197);
+    box-shadow: -3px 1px 7px -3px rgba(43, 43, 43, 0.42);
+    -webkit-box-shadow: -3px 1px 7px -3px rgba(43, 43, 43, 0.42);
+    -moz-box-shadow: -3px 1px 7px -3px rgba(43, 43, 43, 0.42);
 }
 
-.pagContainer button {
+.pageNumber:hover {
+    transform: scale(1.15);
+    background-color: #eee;
+    color: #333;
+    font-weight: bold;
+}
+
+.pageNumberActive {
+    background-color: #eee;
+    transform: scale(1.15);
+    font-weight: bold;
+    width: 31px;
+    height: 31px;
+    border-radius: 50%;
+    border: none;
+    box-shadow: -3px 1px 7px -3px rgba(43, 43, 43, 0.42);
+    -webkit-box-shadow: -3px 1px 7px -3px rgba(43, 43, 43, 0.42);
+    -moz-box-shadow: -3px 1px 7px -3px rgba(43, 43, 43, 0.42);
+}
+
+.botton {
     width: 80px;
     height: 30px;
     margin: 0 5px;
@@ -47,7 +79,7 @@
     cursor: pointer;
 }
 
-.pagContainer button:hover {
+.botton:hover {
     background-color: #eee;
     color: #333;
 }
