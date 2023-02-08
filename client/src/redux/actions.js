@@ -8,8 +8,7 @@ export const FILTER_ORIGIN = 'FILTER_ORIGIN';
 export const FILTER_GENRE = 'FILTER_GENRE';
 export const ORDER_BY_NAME = 'ORDER_BY_NAME';
 export const ORDER_RATING = 'ORDER_RATING';
-
-
+export const RESET_DETAIL = 'RESET_DETAIL';
 
 export const getGames = () => {
   return async function (dispatch) {
@@ -61,3 +60,7 @@ export const orderName = (payload) => {
 export const orderRating = (payload) => {
   return { type: ORDER_RATING, payload }
 }
+
+export const resetDetail = () => ({
+  type: RESET_DETAIL
+});

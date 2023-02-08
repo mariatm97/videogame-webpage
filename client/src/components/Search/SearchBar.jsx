@@ -4,9 +4,10 @@ import { useDispatch } from 'react-redux';
 import { getName } from '../../redux/actions';
 import style from './SearchBar.module.css'
 
-export default function SearchBar() {
+export default function SearchBar({ handleInputSubmit }) {
   const dispatch = useDispatch();
-  const [name, setName] = useState('')
+  const [name, setName] = useState('');
+
 
   const handleInputChange = (event) => {
     setName(event.target.value)
@@ -17,6 +18,7 @@ export default function SearchBar() {
     else {
       dispatch(getName(name));
       setName('');
+      handleInputSubmit()
     }
   }
   return (

@@ -9,8 +9,8 @@ export const validate = (form) => {
         errors.name = 'Please type a valid game name (no special characters)';
     if (form.name === '')
         errors.name = 'Please type a valid game name (non-empty string)';
-    if (!(/^[a-zA-Z ]{4,}$/.test(form.name)))
-        errors.name = 'Please type a valid game name (must have more than 4 letters)';
+    // if (!(/^[a-zA-Z ]{4,}$/.test(form.name)))
+    //     errors.name = 'Please type a valid game name (must have more than 4 letters)';
 
     if (form.description === '') errors.description = 'Please write the description of the game'
 
@@ -22,9 +22,9 @@ export const validate = (form) => {
     else if (!(regexRating.test(form.rating))) errors.rating = 'Rating must be a number between 0 - 5'
 
 
-    if (form.genres.length === 0) errors.genres = 'Select at least one genre.';
+    // if (form.genres.length === 0) errors.genres = 'Select at least one genre.';
 
-    if (form.platforms.length === 0) errors.platforms = 'Select at least one platform.';
+    // if (form.platforms.length === 0) errors.platforms = 'Select at least one platform.';
 
     return errors;
 };

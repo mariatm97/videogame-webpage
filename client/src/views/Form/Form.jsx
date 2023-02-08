@@ -14,7 +14,15 @@ export const Form = () => {
   allGames.forEach(game => game.platforms.forEach(platform => platformsList.add(platform)));
   const platforms = Array.from(platformsList);
 
+  // estado para reiniciar los valores de genres y platforms
+  const [selectedGenre, setSelectedGenre] = useState('Seleccionar');
+  const [selectedPlatform, setSelectedPlatform] = useState('Seleccionar');
+  const reset = () => {
+    setSelectedGenre('Seleccionar');
+    setSelectedPlatform('Seleccionar')
+  };
 
+  //estado del formulario
   const [form, setForm] = useState({
     name: '',
     description: '',
@@ -23,7 +31,7 @@ export const Form = () => {
     platforms: [],
     genres: [],
   });
-
+  //estado de errores
   const [errors, setErrors] = useState({
     name: '',
     description: '',
@@ -56,6 +64,7 @@ export const Form = () => {
         platforms: [],
         genres: [],
       })
+      reset();
     } else {
       alert('ERROR: there are unfilled fields😕');
       console.log(errors)
@@ -106,45 +115,45 @@ export const Form = () => {
         </div>
         <div>
           <div>
-            <label>⚜️Genres: *</label>
-            <select defaultValue="Seleccionar" name='genres' onChange={(event) => handleGenres(event)}>
+            <label >⚜️Genres: * </label>
+            <select value={selectedGenre} onChange={(event) => { setSelectedGenre(event.target.value); handleGenres(event) }}>
               <option disabled>Seleccionar</option>
               {genres?.map((g) => (<option value={g.name} key={g.id}> {g.name}</option>))}
             </select>
           </div>
-          <div>
+          <div className={style.selection}>
             {form.genres?.map((g) => (
-              <div key={g}> {g + " "}
-                <button key={g.id} value={g.name} onClick={() => handleDeleteGenre(g)}>X</button>
+              <div className={style.sele} key={g}> {g + " "}
+                <button className={style.delete} key={g.id} value={g.name} onClick={() => { handleDeleteGenre(g); reset(); }}>X</button>
               </div>))}
           </div>
-          {errors.genres && <p className={style.errorSelectText}>{errors.genres}</p>}
+          {/* {errors.genres && <p className={style.errorSelectText}>{errors.genres}</p>} */}
         </div>
 
 
         <div>
           <div>
-            <label>🎮Platforms: *</label>
-            <select defaultValue="Seleccionar" name='platforms' onChange={(event) => handlePlatform(event)}>
+            <label>🎮Platforms: * </label>
+            <select value={selectedPlatform} name='platforms' onChange={(event) => { setSelectedPlatform(event.target.value); handlePlatform(event) }}>
               <option disabled>Seleccionar</option>
               {platforms?.map((p) => (<option value={p} key={p}>{p}</option>))}
             </select>
 
           </div>
-          <div>
+          <div className={style.selection}>
             {form.platforms?.map((p) => (
-              <div key={p}> {p + " "}
-                <button onClick={() => handleDeletePlataform(p)}>X</button>
+              <div className={style.sele} key={p}> {p + " "}
+                <button className={style.delete} onClick={() => { handleDeletePlataform(p); reset(); }}>X</button>
               </div>))}
           </div>
-          {errors.platforms && <p className={style.errorSelectText}>{errors.platforms}</p>}
+          {/* {errors.platforms && <p className={style.errorSelectText}>{errors.platforms}</p>} */}
         </div>
 
 
-        <button type='submit'>Create Game</button>
+        <button className={style.btn} type='submit'>Create Game</button>
         <div>
           <Link to='/home'>
-            <button>◀ Return Home</button>
+            <button className={style.btn}>◀ Return Home</button>
           </Link>
         </div>
       </form>

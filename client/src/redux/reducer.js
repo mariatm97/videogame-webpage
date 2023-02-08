@@ -6,14 +6,15 @@ import {
   FILTER_ORIGIN,
   FILTER_GENRE,
   ORDER_BY_NAME,
-  ORDER_RATING
+  ORDER_RATING,
+  RESET_DETAIL
 } from './actions';
 
 const initialstate = {
   games: [],
   allGames: [],
   gameDetail: [],
-  genres: []
+  genres: [],
 }
 
 const rootReducer = (state = initialstate, action) => {
@@ -23,6 +24,9 @@ const rootReducer = (state = initialstate, action) => {
 
     case GAME_DETAIL:
       return { ...state, gameDetail: action.payload };
+
+    case RESET_DETAIL:
+      return { ...state, gameDetail: {} }
 
     case GAME_BY_NAME:
       return { ...state, games: action.payload };

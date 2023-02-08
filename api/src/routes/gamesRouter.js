@@ -2,7 +2,7 @@ const { Router } = require("express");
 const {
     getAllGamesHandler,
     getGameHandler,
-    postCreateGamesHandler
+    postCreateGamesHandler,
 } = require('../handlers/gamesHandler');
 const gamesRouter = Router()
 const validate = (req, res, next) => {

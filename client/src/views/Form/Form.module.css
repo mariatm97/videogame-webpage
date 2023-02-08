@@ -45,9 +45,10 @@ textarea {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.311);
     /* Agrega una sombra al formulario */
     font-size: 15px;
+    appearance: none;
 }
 
-.formcontainer button {
+.btn {
     font-size: 15px;
     align-self: flex-end;
     width: 25%;
@@ -59,18 +60,32 @@ textarea {
     transition: all 0.3s ease-in-out;
     margin-top: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.609);
+    border: none;
+    cursor: pointer;
 }
 
-.Delete {
-    font-size: 10px;
-    align-self: flex-end;
-    width: 5%;
-    padding: 5px 10px;
-    background-color: #131211;
+/* .selection {
+    justify-content: center;
+    align-items: center;
+    background-color: azure;
+    padding: 3px;
+    border-radius: 10px;
+    height: 30px;
+} */
+
+.delete {
+    align-items: center;
+    font-size: 11px;
+    width: 20px;
+    height: auto;
+    background-color: #424444;
     color: #fff;
+    border: none;
     text-decoration: none;
     border-radius: 40px;
-    transition: all 0.3
+    /* align-items: flex-start; */
+    box-shadow: 0px 0px 10px rgba(56, 56, 56, 0.609);
+    cursor: pointer;
 }
 
 .errorText {
@@ -90,4 +105,23 @@ textarea {
     color: rgb(205, 13, 13);
     justify-content: flex-start;
     font-weight: bold;
+}
+
+.selection {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.sele {
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+    width: auto;
+    height: auto;
+    background-color: rgb(126, 122, 122);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.609);
 }

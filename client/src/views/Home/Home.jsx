@@ -12,9 +12,9 @@ const Home = () => {
   //Cuando se monte mi Home, que se monten todos mis Videogames
   useEffect(() => {
     dispatch(getGames());
-    dispatch(getGenres())
+    dispatch(getGenres());
   }, [dispatch])
-
+  
 
   return (
     <>

@@ -40,6 +40,7 @@
     box-shadow: -3px 1px 7px -3px rgba(43, 43, 43, 0.42);
     -webkit-box-shadow: -3px 1px 7px -3px rgba(43, 43, 43, 0.42);
     -moz-box-shadow: -3px 1px 7px -3px rgba(43, 43, 43, 0.42);
+    cursor: pointer;
 }
 
 .pageNumber:hover {
@@ -60,6 +61,7 @@
     box-shadow: -3px 1px 7px -3px rgba(43, 43, 43, 0.42);
     -webkit-box-shadow: -3px 1px 7px -3px rgba(43, 43, 43, 0.42);
     -moz-box-shadow: -3px 1px 7px -3px rgba(43, 43, 43, 0.42);
+    cursor: pointer;
 }
 
 .botton {
