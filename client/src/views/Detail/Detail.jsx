@@ -27,13 +27,13 @@ export const Detail = () => {
         <h3>{detail.name}</h3>
         <img src={detail.image} alt='imageGame' />
         <p>⚜️Generos: {detail.genres?.join(',  ')}</p>
-        <p>📝Description: <p dangerouslySetInnerHTML={{ __html: detail.description }} /></p>
+        <p>📝Description: <span dangerouslySetInnerHTML={{ __html: detail.description }} /></p>
         <p> ⭐Rating: {detail.rating}</p>
         <p> 🎮Platforms: {detail.id?.length > 7
           ? detail.platforms
           : detail.platforms?.join(', ')}</p>
         <p> 📆Released: {detail.released ? detail.released : 'No information'}</p>
-        <Link to={'/home'} onClick={handleReset}><button>◀ Return</button></Link>
+        <Link to='/home' onClick={handleReset}><button>◀ Return</button></Link>
       </div>
 
     </div >
