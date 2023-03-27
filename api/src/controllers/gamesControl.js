@@ -20,7 +20,7 @@ const allGames = async () => {
       id: game.id,
       name: game.name,
       image: game.image,
-      rating: game.rating,
+      rating: game.rating?.toFixed(1),
       platforms: game.platforms,
       genres: game.genres?.map(el => el.name),
       created: true
@@ -46,7 +46,7 @@ const allGames = async () => {
       id: game.id,
       name: game.name,
       image: game.background_image,
-      rating: game.rating,
+      rating: game.rating?.toFixed(1),
       platforms: game.parent_platforms?.map(
         (e) => e.platform.name),
       genres: game.genres?.map(el => el.name),
@@ -68,6 +68,7 @@ const searchGamesByName = async (name) => {
       id: game.id,
       name: game.name,
       image: game.image,
+      rating: game.rating?.toFixed(1),
       genres: game.genres?.map(el => el.name),
       created: true
     }
@@ -80,6 +81,7 @@ const searchGamesByName = async (name) => {
       id: game.id,
       name: game.name,
       image: game.background_image,
+      rating: game.rating?.toFixed(1),
       genres: game.genres?.map(el => el.name),
       created: false,
     }
@@ -103,7 +105,7 @@ const gameById = async (id, source) => {
       description: apiGamesRaw.description,
       genres: apiGamesRaw.genres?.map((e) => e.name),
       released: apiGamesRaw.released,
-      rating: apiGamesRaw.rating,
+      rating: apiGamesRaw.rating?.toFixed(1),
       platforms: apiGamesRaw.parent_platforms?.map(
         (e) => e.platform.name
       ),
@@ -119,7 +121,7 @@ const gameById = async (id, source) => {
       image: dataDB.image,
       description: dataDB.description,
       released: dataDB.released,
-      rating: dataDB.rating,
+      rating: dataDB.rating?.toFixed(1),
       platforms: dataDB.platforms,
       genres: dataDB.genres?.map(el => el.name),
     }

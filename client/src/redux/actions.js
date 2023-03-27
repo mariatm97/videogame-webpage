@@ -45,7 +45,7 @@ export const getGenres = () => {
     const allgenres = response.data;
     dispatch({ type: ALL_GENRES, payload: allgenres })
   };
-};
+}; 
 
 export const filterOrigin = (payload) => {
   return { type: FILTER_ORIGIN, payload }

@@ -90,6 +90,7 @@ const CardsContainer = () => {
             name={game.name}
             id={game.id}
             image={game.image}
+            rating={game.rating}
             genres={game.genres.map((gen) => <p key={gen}>{gen}</p>)}
           />
         })}

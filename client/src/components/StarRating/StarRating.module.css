@@ -1,0 +1,19 @@
+.rating {
+    display: inline-block;
+    font-size: 0;
+    /* Elimina el espacio entre las estrellas */
+}
+
+.star {
+    color: #ffce00;
+    font-size: 18px;
+}
+
+.staro {
+    color: rgb(176, 174, 174);
+    font-size: 18px;
+}
+
+.partial {
+    mask-image: linear-gradient(to right, black calc(var(--percent) - 1px), transparent calc(var(--percent) + 1px));
+}

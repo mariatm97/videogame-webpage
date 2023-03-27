@@ -9,7 +9,6 @@
     border-radius: 10px;
     /* overflow: hidden; */
     margin: 2% auto;
-    display: flex;
     flex-wrap: wrap;
     justify-content: center;
     background-color: rgba(184, 184, 184, 0.487);
