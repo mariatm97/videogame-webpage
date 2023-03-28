@@ -1,11 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import style from './Form.module.css';
 import { validate, } from './formValidate.js';
+import { useDispatch } from 'react-redux';
+import { getGames, getGenres } from '../../redux/actions'
 
 export const Form = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getGames());
+    dispatch(getGenres());
+  }, [dispatch])
 
   const genres = useSelector((state) => state.genres);
   //Para traer un array de platforms
@@ -28,6 +36,7 @@ export const Form = () => {
     description: '',
     released: '',
     rating: 0,
+    image: '',
     platforms: [],
     genres: [],
   });
@@ -37,6 +46,7 @@ export const Form = () => {
     description: '',
     released: '',
     rating: '',
+    image: '',
     platforms: '',
     genres: '',
   });
@@ -61,10 +71,12 @@ export const Form = () => {
         description: '',
         released: '',
         rating: 0,
+        image: '',
         platforms: [],
         genres: [],
       })
       reset();
+      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     } else {
       alert('ERROR: there are unfilled fields😕');
       console.log(errors)
@@ -112,6 +124,11 @@ export const Form = () => {
           <label>⭐Rating: </label>
           <input type='text' value={form.rating} onChange={handleOnChange} name='rating' placeholder='Rating from 1 to 5...' autoComplete='off' />
           {errors.rating && <p className={style.errorText}>{errors.rating}</p>}
+        </div>
+        <div>
+          <label>🖼️Image: </label>
+          <input type='text' value={form.image} onChange={handleOnChange} name='image' placeholder='type the URL of the videogame image...' autoComplete='off' />
+          {errors.image && <p className={style.errorText}>{errors.image}</p>}
         </div>
         <div>
           <div>

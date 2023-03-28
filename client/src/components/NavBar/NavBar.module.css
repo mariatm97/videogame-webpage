@@ -30,6 +30,12 @@
   /* cambia el color de la fuente */
   cursor: pointer;
   /* cambia el cursor a "pointer" cuando el usuario pasa sobre el botón */
-  font-size: 17px;
+  font-size: 18px;
 
+}
+
+.NavContainer input {
+  height: 3vh;
+  font-size: 15px;
+  border-radius: 5px;
 }

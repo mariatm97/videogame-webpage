@@ -1,6 +1,7 @@
 const regexName = /^[a-zA-Z0-9 ():_-]*$/;
 const regexReleased = /^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[012])-(19|20)[0-9]{2}$/;
 const regexRating = /^[0-5]+([.][0-5]+)?$/;
+const regexImg = /^https?:\/\/(?:www\.)?\S+\.(?:jpg|jpeg|png|gif)$/i;
 
 export const validate = (form) => {
     const errors = {}
@@ -21,7 +22,8 @@ export const validate = (form) => {
     if (form.rating === '');
     else if (!(regexRating.test(form.rating))) errors.rating = 'Rating must be a number between 0 - 5'
 
-
+    if (!(regexImg.test(form.image)))
+        errors.image = 'Please type a valid URL';
     // if (form.genres.length === 0) errors.genres = 'Select at least one genre.';
 
     // if (form.platforms.length === 0) errors.platforms = 'Select at least one platform.';

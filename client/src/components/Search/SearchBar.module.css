@@ -12,7 +12,7 @@
 }
 
 .searchBar input [type="text"] {
-    width: 100%;
+    width: 80%;
     /* ocupa el ancho completo de la barra de búsqueda */
     padding: 5px;
     /* agrega un poco de espacio alrededor */

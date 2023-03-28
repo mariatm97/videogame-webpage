@@ -44,7 +44,7 @@ export const FilterBar = ({ filterGenres, filterOrigin, orderName, orderRating, 
         {allGenres?.map((g) => (<option value={g.name} key={g.id}> {g.name}</option>))}
       </select>
 
-      <button onClick={() => { reload(); reset(); }}>Reload Home</button>
+      <button onClick={() => { reload(); reset(); }}>Clear</button>
     </div>
   )
 }

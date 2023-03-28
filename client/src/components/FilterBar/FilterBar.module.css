@@ -20,6 +20,8 @@
 }
 
 .FilterContainer select {
+    width: 45vh;
+    font-size: 17px;
     padding: 10px;
     /* agrega un poco de espacio alrededor */
     background-color: transparent;
@@ -30,6 +32,7 @@
     /* cambia el color de la fuente */
     cursor: pointer;
     /* cambia el cursor a "pointer" cuando el usuario pasa sobre el botón */
+    /* padding-left: 10vh; */
 }
 
 .FilterContainer option {
@@ -43,11 +46,12 @@
     /* cambia el color de la fuente */
     cursor: pointer;
     /* cambia el cursor a "pointer" cuando el usuario pasa sobre el botón */
+    /* padding-left: 20px; */
 }
 
 .FilterContainer button {
-    font-size: 15px;
-    width: 50%;
+    font-size: 17px;
+    width: 20vh;
     padding: 10px;
     /* agrega un poco de espacio alrededor */
     background-color: transparent;
@@ -59,5 +63,5 @@
     cursor: pointer;
     /* cambia el cursor a "pointer" cuando el usuario pasa sobre el botón */
     box-shadow: 8px 8px 8px rgba(36, 36, 36, 0.609);
-    border-radius: 4px;
+    border-radius: 7px;
 }
