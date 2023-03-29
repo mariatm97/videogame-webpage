@@ -12,7 +12,7 @@ export const RESET_DETAIL = 'RESET_DETAIL';
 
 export const getGames = () => {
   return async function (dispatch) {
-    const response = await axios.get('http://localhost:3001/videogames');
+    const response = await axios.get('/videogames');
     const games = response.data;
     dispatch({ type: ALL_GAMES, payload: games });
   };
@@ -20,7 +20,7 @@ export const getGames = () => {
 
 export const getDetail = (id) => {
   return async function (dispatch) {
-    const response = await axios.get(`http://localhost:3001/videogames/${id}`);
+    const response = await axios.get(`/videogames/${id}`);
     const gameById = response.data;
     dispatch({ type: GAME_DETAIL, payload: gameById });
   };
@@ -29,7 +29,7 @@ export const getDetail = (id) => {
 export const getName = (name) => {
   return async function (dispatch) {
     try {
-      const response = await axios.get(`http://localhost:3001/videogames?name=${name}`);
+      const response = await axios.get(`/videogames?name=${name}`);
       const gameByName = response.data;
       dispatch({ type: GAME_BY_NAME, payload: gameByName });
     } catch (error) {
@@ -41,11 +41,11 @@ export const getName = (name) => {
 
 export const getGenres = () => {
   return async function (dispatch) {
-    const response = await axios.get('http://localhost:3001/genres');
+    const response = await axios.get('/genres');
     const allgenres = response.data;
     dispatch({ type: ALL_GENRES, payload: allgenres })
   };
-}; 
+};
 
 export const filterOrigin = (payload) => {
   return { type: FILTER_ORIGIN, payload }
