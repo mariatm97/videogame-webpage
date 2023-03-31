@@ -5,7 +5,9 @@ import { Link } from 'react-router-dom';
 import style from './Form.module.css';
 import { validate, } from './formValidate.js';
 import { useDispatch } from 'react-redux';
-import { getGames, getGenres } from '../../redux/actions'
+import { getGames, getGenres } from '../../redux/actions';
+import Swal from 'sweetalert2'
+
 
 export const Form = () => {
   const dispatch = useDispatch();
@@ -64,8 +66,8 @@ export const Form = () => {
     if (!Object.keys(errors).length) {
 
       axios.post('http://localhost:3001/videogames', form)
-        .then(res => alert(res.data))
-        .catch(err => alert(err))
+        .then(res => new Swal("Excellent!", res.data, "success"))
+        .catch(err => new Swal("ERROR!", err, "error"))
       setForm({
         name: '',
         description: '',
@@ -78,8 +80,8 @@ export const Form = () => {
       reset();
       window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     } else {
-      alert('ERROR: there are unfilled fields😕');
-      console.log(errors)
+      new Swal("ERROR", 'there are unfilled fields😕', "error");
+      // console.log(errors)
     }
   };
 

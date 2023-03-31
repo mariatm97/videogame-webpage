@@ -1,4 +1,6 @@
 import axios from 'axios';
+import Swal from 'sweetalert2'
+
 
 export const ALL_GAMES = 'ALL_GAMES';
 export const GAME_DETAIL = 'GAME_DETAIL';
@@ -33,7 +35,7 @@ export const getName = (name) => {
       const gameByName = response.data;
       dispatch({ type: GAME_BY_NAME, payload: gameByName });
     } catch (error) {
-      alert(`${name} does not exist!`)
+      new Swal("Sorry!", `${name} does not exist!`, "error")
     }
 
   };

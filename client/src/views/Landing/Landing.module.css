@@ -3,7 +3,6 @@ body {
 }
 
 .LandingContainer {
-    font-family: 'Press Start 2P', cursive;
     color: white;
     text-shadow: 4px 4px 4px black;
     margin: 0;
@@ -13,40 +12,46 @@ body {
     flex-wrap: wrap;
     align-items: center;
     /* para la imagen de fondo */
-    background-image: url('../../images/background_videogames_1.jpg');
+    background-image: url('../../images/background_videogames_5.png');
     height: 100vh;
-    background-size: cover;
+    background-size: contain;
+    /* background-repeat: repeat; */
     background-position: center;
-    background-size: 100%;
-    background-color: black;
+    /* background-size: 100%; */
+    /* background-color: black; */
 }
 
 .LandingContainer h1 {
     font-size: 40px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: rgb(255, 225, 57);
     /* margin-top: -0vh; */
 }
 
 .LandingContainer h2 {
-    font-size: 40px;
-    margin-top: -2vh;
-    margin-bottom: 50vh;
+    font-size: 50px;
+    margin-top: -3vh;
+    margin-bottom: 40vh;
+    font-family: 'Press Start 2P', cursive;
+    text-shadow: 4px 4px 4px rgb(116, 0, 158);
 }
 
 .LandingContainer button {
     font-size: 20px;
-    background-color: #982ca4;
+    background-color: #9517a3;
     color: white;
     padding: 14px 50px;
     margin: 8px;
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    /* width: 100%; */
     opacity: 0.9;
-    box-shadow: 0px 0px 5px rgba(102, 96, 96, 0.714);
 }
 
 .LandingContainer button:hover {
-    opacity: 5;
+    opacity: 10;
+    transform: scale(1.1);
+    transition: transform 1s;
+    transition: color 2s;
     cursor: pointer;
 }

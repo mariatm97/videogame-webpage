@@ -5,7 +5,7 @@
     /* coloca la barra de navegación en la parte superior */
     left: 0;
     /* coloca la barra de navegación en el lado izquierdo */
-    width: 100%;
+    width: 100vw;
     /* ocupa el ancho completo del contenedor */
     background-color: #333;
     /* cambia el color de fondo */
@@ -20,7 +20,7 @@
 }
 
 .FilterContainer select {
-    width: 45vh;
+    width: 20vw;
     font-size: 17px;
     padding: 10px;
     /* agrega un poco de espacio alrededor */
@@ -51,7 +51,7 @@
 
 .FilterContainer button {
     font-size: 17px;
-    width: 20vh;
+    width: 20vw;
     padding: 10px;
     /* agrega un poco de espacio alrededor */
     background-color: transparent;

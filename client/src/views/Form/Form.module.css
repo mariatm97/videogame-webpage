@@ -5,7 +5,7 @@
     /* Centra el formulario en la página */
     padding: 20px;
     /* Agrega un padding al formulario */
-    background-color: #787171;
+    background-color: #777178;
     /* Establece un color de fondo */
     border-radius: 10px;
     /* Agrega bordes redondeados */
@@ -49,10 +49,10 @@ textarea {
 }
 
 .btn {
-    font-size: 15px;
+    font-size: 17px;
     align-self: flex-end;
-    width: 25%;
-    padding: 10px 20px;
+    width: 15vw;
+    padding: 10px;
     background-color: #131211;
     color: #fff;
     text-decoration: none;

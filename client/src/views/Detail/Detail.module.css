@@ -2,21 +2,20 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     padding: 20px;
-    width: 55%;
-    /* height: auto; */
+    width: 75vw;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.609);
     border-radius: 10px;
-    /* overflow: hidden; */
     margin: 2% auto;
     flex-wrap: wrap;
-    justify-content: center;
     background-color: rgba(184, 184, 184, 0.487);
+
 }
 
 
 .Detailcontainer img {
-    width: 60%;
+    width: 87%;
     height: 30%;
     object-fit: cover;
     border-radius: 5px;
@@ -24,33 +23,69 @@
 }
 
 .Detailcontainer h3 {
-    font-size: 25px;
+    font-size: 40px;
     font-weight: bold;
     text-align: center;
     margin: 20px 0;
     text-transform: uppercase;
 }
 
-.Detailcontainer p {
-    font-size: 15px;
-    display: block;
-    margin-bottom: 1em;
-    text-align: center;
-    margin: 10px;
-}
-
 .Detailcontainer button {
-    align-self: flex-end;
-    width: 15%;
+    /* align-self: flex-end; */
+    width: 17vw;
     font-size: 1rem;
-    padding: 10px 20px;
+    padding: 10px;
     background-color: #131211;
     color: #fff;
     text-decoration: none;
     border-radius: 20px;
     transition: all 0.3s ease-in-out;
-    margin-top: 8px;
+    margin-top: 1vh;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.609);
     border: none;
     cursor: pointer;
+}
+
+
+.abouText {
+    margin-left: 4vw;
+    width: 65vw;
+    background-color: rgba(255, 255, 255, 0.745);
+    border-radius: .5em;
+    padding: 1vw;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.aboutinf {
+    width: 50vw;
+    margin-left: 12.5vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    margin-top: -1vw;
+    /* padding: 10px; */
+}
+
+.aboutcontext {
+    padding: 10px;
+}
+
+.h3Ab {
+    width: auto;
+    color: rgb(22, 19, 19);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 16px;
+}
+
+.pAb {
+    width: auto;
+    font-weight: 560;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 16px;
+    padding: .3em;
+    background-color: rgba(153, 149, 152, 0.668);
+    border-radius: .5em;
+    margin-top: -3vh;
+    color: rgb(255, 255, 255);
 }
