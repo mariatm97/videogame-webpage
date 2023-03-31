@@ -50,6 +50,7 @@
     font-size: 15px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.609);
     cursor: pointer;
+    margin: 5px;
 }
 
 .botton:hover {

@@ -1,9 +1,9 @@
 .formcontainer {
-    width: 50%;
+    width: 50vw;
     /* Establece el ancho del formulario */
     margin: 2% auto;
     /* Centra el formulario en la página */
-    padding: 20px;
+    padding: 30px;
     /* Agrega un padding al formulario */
     background-color: #777178;
     /* Establece un color de fondo */
@@ -14,8 +14,11 @@
 }
 
 .formcontainer h1 {
+    justify-content: center;
+    align-items: center;
     color: white;
-    font-size: 40px;
+    font-size: 36px;
+    /* margin-left: -1vw; */
 }
 
 .formcontainer label {
@@ -51,7 +54,7 @@ textarea {
 .btn {
     font-size: 17px;
     align-self: flex-end;
-    width: 15vw;
+    width: auto;
     padding: 10px;
     background-color: #131211;
     color: #fff;
