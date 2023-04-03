@@ -65,7 +65,8 @@ export const Form = () => {
     event.preventDefault()
     if (!Object.keys(errors).length) {
 
-      axios.post('http://localhost:3001/videogames', form)
+      // axios.post('http://localhost:3001/videogames', form)
+      axios.post('/videogames', form)
         .then(res => new Swal("Excellent!", res.data, "success"))
         .catch(err => new Swal("ERROR!", err, "error"))
       setForm({
