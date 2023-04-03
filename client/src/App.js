@@ -5,7 +5,9 @@ import NavBar from './components/NavBar/NavBar';
 // import FilterBar from './components/FilterBar/FilterBar';
 
 import axios from 'axios';
-axios.defaults.baseURL = "http://localhost:3001";
+// axios.defaults.baseURL = "http://localhost:3001";
+axios.defaults.baseURL = "videogame-webpage-back.up.railway.app";
+
 
 function App() {
   const location = useLocation();

@@ -15,7 +15,7 @@
 
 
 .Detailcontainer img {
-    width: 87%;
+    width: 80%;
     height: 30%;
     object-fit: cover;
     border-radius: 5px;
@@ -48,8 +48,8 @@
 
 
 .abouText {
-    margin-left: 4vw;
-    width: 65vw;
+    margin-left: 6.5vw;
+    width: 60vw;
     background-color: rgba(255, 255, 255, 0.745);
     border-radius: .5em;
     padding: 1vw;
@@ -57,8 +57,8 @@
 }
 
 .aboutinf {
-    width: 50vw;
-    margin-left: 12.5vw;
+    width: 60vw;
+    margin-left: 7vw;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -68,7 +68,7 @@
 }
 
 .aboutcontext {
-    padding: 10px;
+    padding: 5px;
 }
 
 .h3Ab {
@@ -88,4 +88,39 @@
     border-radius: .5em;
     margin-top: -3vh;
     color: rgb(255, 255, 255);
+}
+
+@media screen and (max-width: 770px) {
+    .abouText {
+        margin-left: 6.5vw;
+    }
+
+    .aboutinf {
+        margin-left: 7vw;
+
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .abouText {
+        margin-left: 6vw;
+        font-size: 15px;
+    }
+
+    .aboutinf {
+        margin-left: 7.5vw;
+
+    }
+
+    .aboutcontext {
+        padding: 5px;
+    }
+
+    .h3Ab {
+        font-size: 15px;
+    }
+
+    .pAb {
+        font-size: 13px;
+    }
 }

@@ -17,12 +17,16 @@
     /* alinea los elementos en el centro */
     justify-content: center;
     /* alinea los elementos a la derecha */
+    /* height: 50px; */
+    margin: 2px;
+    /* margin-left: -1vw; */
 }
 
 .FilterContainer select {
-    width: 20vw;
+    width: 25vw;
+    overflow: auto;
     font-size: 17px;
-    padding: 10px;
+    padding: 8px;
     /* agrega un poco de espacio alrededor */
     background-color: transparent;
     /* elimina el color de fondo */
@@ -32,10 +36,15 @@
     /* cambia el color de la fuente */
     cursor: pointer;
     /* cambia el cursor a "pointer" cuando el usuario pasa sobre el botón */
-    /* padding-left: 10vh; */
+    line-height: 1;
+    /* max-width: 50%; */
+    box-sizing: border-box;
+    line-height: 1.5;
+    border-radius: 4px;
 }
 
 .FilterContainer option {
+    width: auto;
     padding: 10px;
     /* agrega un poco de espacio alrededor */
     background-color: transparent;
@@ -46,12 +55,13 @@
     /* cambia el color de la fuente */
     cursor: pointer;
     /* cambia el cursor a "pointer" cuando el usuario pasa sobre el botón */
-    /* padding-left: 20px; */
+    font-size: 15px;
+    overflow: scroll;
 }
 
 .FilterContainer button {
     font-size: 17px;
-    width: 20vw;
+    width: 15vw;
     padding: 10px;
     /* agrega un poco de espacio alrededor */
     background-color: transparent;
@@ -64,4 +74,19 @@
     /* cambia el cursor a "pointer" cuando el usuario pasa sobre el botón */
     box-shadow: 8px 8px 8px rgba(36, 36, 36, 0.609);
     border-radius: 7px;
+}
+
+@media screen and (max-width: 480px) {
+
+    .FilterContainer select {
+        /* box-sizing: content-box; */
+        width: 100%;
+        /* line-height: 150%; */
+    }
+
+    /* .FilterContainer option {
+        height: -55px;
+        font-size: 13px;
+        line-height: 150%;
+    } */
 }

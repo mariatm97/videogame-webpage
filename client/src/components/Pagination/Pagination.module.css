@@ -3,6 +3,9 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    width: 100vw;
+    margin-left: -40px;
+    margin-top: -2vh;
 }
 
 .pageNumber {
@@ -39,7 +42,7 @@
 }
 
 .botton {
-    width: 75px;
+    width: 50px;
     background-color: rgb(80, 76, 76);
     border: 1px solid rgb(203, 197, 197);
     border-radius: 10%;
